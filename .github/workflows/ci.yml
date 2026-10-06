@@ -21,7 +21,7 @@ jobs:
         uses: docker/login-action@v3
         with:
           username: ali00mohamed
-          password: ${{ secrets.DOCKER_PASSWORD }}
+          password: ${{ secrets.DOCKER_PASSWOD }}
 
       - name: Tag Docker image
         run: docker tag web-app3:1.0 ali00mohamed/m:1.0
