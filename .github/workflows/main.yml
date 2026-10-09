@@ -8,11 +8,11 @@ on:
         type: choice
         options:
           - staging
-          -  env
-          - prod
+          - environment
+          - production
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:  
     - name: deploy application
-      run: echo "application is deploy"
+      run: echo "application is deploy om ${{inputs.ENVIRONMENT}}"
