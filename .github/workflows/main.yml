@@ -1,0 +1,18 @@
+on:
+  workflow_dispatch:
+    inputs:
+      ENVIRONMENT:
+        description: chose environment
+        required: true
+        default: staging
+        type: choice
+        options:
+          - staging
+          - environment
+          - production
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:  
+    - name: deploy application
+      run: echo "application is deploy om ${{inputs.ENVIRONMENT}}"
