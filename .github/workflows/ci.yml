@@ -48,7 +48,7 @@ jobs:
           ssh-keyscan -H ${{ vars.SSH_HOST }} >> ~/.ssh/known_hosts
 
       - name: Deploy to EC2
-      run: |
+        run: |
         ssh -i ~/.ssh/id_rsa ${{ vars.EC2_USER }}@${{ vars.EC2_HOST }} << EOF
           cd /home/ubuntu/ali-final-task/app
           sudo docker compose restart
