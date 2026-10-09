@@ -10,7 +10,7 @@ on:
         -  env
         - prod
 jobs:
-  deploy
+  deploy:
     runs-on: ubuntu-latest
     steps:  
     - name: deploy application
