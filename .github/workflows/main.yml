@@ -1,14 +1,15 @@
 on:
   workflow_dispatch:
-    ENVIRONMENT:
-      description: chose environment
-      required: true
-      default: staging
-      type: choice
-      options:
-        - staging
-        -  env
-        - prod
+    inputs:
+      ENVIRONMENT:
+        description: chose environment
+        required: true
+        default: staging
+        type: choice
+        options:
+          - staging
+          -  env
+          - prod
 jobs:
   deploy:
     runs-on: ubuntu-latest
