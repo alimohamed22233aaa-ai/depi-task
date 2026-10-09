@@ -1,0 +1,17 @@
+on:
+  workflow_dispatch:
+    ENVIRONMENT:
+      description: chose environment
+      required: true
+      default: staging
+      type: choice
+      options:
+        - staging
+        -  env
+        - prod
+jobs:
+  deploy
+    runs-on: ubuntu-latest
+    steps:  
+    - name: deploy application
+      run: echo"application is deploy"
