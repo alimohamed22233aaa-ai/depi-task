@@ -15,4 +15,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:  
     - name: deploy application
-      run: echo"application is deploy"
+      run: echo "application is deploy"
