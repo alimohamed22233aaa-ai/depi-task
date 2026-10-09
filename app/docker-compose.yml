@@ -1,0 +1,6 @@
+services:
+  web:
+    image: ali00mohamed/web-app3:latest
+    ports:
+      - "80:80"
+    container_name: web-app

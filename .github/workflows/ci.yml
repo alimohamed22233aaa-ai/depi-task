@@ -32,15 +32,24 @@ jobs:
           context: ./app
           push: true
           tags: |
-            ${{ vars.DOCKER_USERNAME }}/web-app3:${{ env.short_tag }}
+              ${{ vars.DOCKER_USERNAME }}/web-app3:${{ env.short_tag }}
 
 
       
-      
-      # - name: Build Docker image
-      #   run: docker build -t web-app3:1.0 ./app  
-      # - name: Tag Docker image
-      #   run: docker tag web-app3:1.0 ali00mohamed/web-app3:1.0
+  Deploy:
+    runs-on: ubuntu-latest
+    needs: dockerbuild
+    steps:
+      - name: setup for ssh
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ vars.SSH_HOST }} >> ~/.ssh/known_hosts
 
-      # - name: Push Docker image
-      #   run: docker push ali00mohamed/web-app3:1.0
+      - name: Deploy to EC2
+      run: |
+        ssh -i ~/.ssh/id_rsa ${{ vars.EC2_USER }}@${{ vars.EC2_HOST }} << EOF
+          cd /home/ubuntu/ali-final-task/app
+          sudo docker compose restart
+        EOF
