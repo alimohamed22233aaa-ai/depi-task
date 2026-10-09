@@ -32,7 +32,7 @@ jobs:
           context: ./app
           push: true
           tags: |
-            ${{ vars.DOCKER_USERNAME }}/web-app3:username:${{ env.short_tag }}
+            ${{ vars.DOCKER_USERNAME }}/web-app3:${{ env.short_tag }}
 
 
       
