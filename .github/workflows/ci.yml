@@ -47,6 +47,11 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H ${{ vars.EC2_HOST }} >> ~/.ssh/known_hosts
 
+      - name: Copy compose file to EC2
+        run: |
+          ssh -i ~/.ssh/id_rsa ${{ vars.EC2_USER }}@${{ vars.EC2_HOST }} "mkdir -p ~/ali-final-task/app"
+          scp -i ~/.ssh/id_rsa app/docker-compose.yml ${{ vars.EC2_USER }}@${{ vars.EC2_HOST }}:~/ali-final-task/app/
+
       - name: Deploy to EC2
         run: |
           ssh -i ~/.ssh/id_rsa ${{ vars.EC2_USER }}@${{ vars.EC2_HOST }} << EOF
