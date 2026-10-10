@@ -67,6 +67,6 @@ jobs:
             cd ~/ali-final-task/app
             export DOCKER_USERNAME=${{ vars.DOCKER_USERNAME }}
             export IMAGE_TAG=${{ env.short_tag }}
-            sudo -E docker compose pull
-            sudo -E docker compose up -d
+            sudo  docker compose pull
+            sudo  docker compose up -d
             EOF
