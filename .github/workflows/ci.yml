@@ -65,4 +65,4 @@ jobs:
             export IMAGE_TAG=${{ env.short_tag }}
             sudo -E docker compose pull
             sudo -E docker compose up -d
-          EOF
+            EOF
