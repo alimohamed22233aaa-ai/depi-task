@@ -56,6 +56,10 @@ jobs:
           ssh -i ~/.ssh/id_rsa ${{ vars.EC2_USER }}@${{ vars.EC2_HOST }} "mkdir -p ~/ali-final-task/app"
           scp -i ~/.ssh/id_rsa app/docker-compose.yml ${{ vars.EC2_USER }}@${{ vars.EC2_HOST }}:~/ali-final-task/app/
 
+
+
+      - name: short commit tag
+        run: echo "short_tag=${GITHUB_SHA::7}" >> $GITHUB_ENV
       - name: Deploy to EC2
         run: |
             ssh -i ~/.ssh/id_rsa ${{ vars.EC2_USER }}@${{ vars.EC2_HOST }} << EOF
