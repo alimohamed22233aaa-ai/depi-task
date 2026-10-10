@@ -33,7 +33,7 @@ jobs:
           push: true
           tags: |
               ${{ vars.DOCKER_USERNAME }}/web-app3:${{ env.short_tag }}
-
+              ${{ vars.DOCKER_USERNAME }}/web-app3:${{ env.short_tag }}
 
       
   Deploy:
