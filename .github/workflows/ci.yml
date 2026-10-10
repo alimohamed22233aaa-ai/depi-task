@@ -40,6 +40,10 @@ jobs:
     runs-on: ubuntu-latest
     needs: dockerbuild
     steps:
+      
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
       - name: setup for ssh
         run: |
           mkdir -p ~/.ssh
